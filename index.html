@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#navigation" data-offset="0">
     <header id="accueil">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#accueil">Quezio</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
+        <a class="navbar-brand scroll" href="#accueil">Quezio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link scroll" href="#accueil">Acceuil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -31,16 +31,16 @@
     </header>
     <section class="accueil">
       <h1 class="col-md-6">Quezio</h1>
-      <p class="col-sm-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p class="col-sm-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p class="col-sm-6">Le formulaire dont VOUS avez besoin.</p>
+      <a class="navlink scroll" href="#form"><button class="myBtn">COMMENCER</button></a>
     </section>
     <div id="form">
       <h1 class="ancre">ANCRE</h1>
-      <h1 class="ancre">ANCRE</h1>
+      <h2 class="ancre">ANCRE</h2>
     </div>
     <section class="formulaire">
       <h1 class="col-md-6">Formulaire</h1>
-      <form>
+      <form class="needs-validation" novalidate>
         <div class="form-col">
           <div class="col-md-6 mb-3">
             <label for="validationServer01">Nom</label>
@@ -57,6 +57,40 @@
                 <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-user"></i></span>
               </div>
               <input type="text" class="form-control" id="validationServerUsername" placeholder="Identifiant" aria-describedby="inputGroupPrepend3" required>
+              <span id="validUsername"></span>
+              <div id="usernameFeedback" class="invalid-feedback">
+                Identifiant non disponible. Veuillez en choisir un autre.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServerUsername">Mot de passe</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-lock"></i></span>
+              </div>
+              <input type="password" class="form-control" id="validationServerUsername" placeholder="Mot de passe" aria-describedby="inputGroupPrepend3" required>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServerUsername">Confirmez le mot de passe</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-lock"></i></span>
+              </div>
+              <input type="password" class="form-control" id="validationServerUsername" placeholder="Confirmez le mot de passe" aria-describedby="inputGroupPrepend3" required>
+            </div>
+            <div class="invalid-feedback">
+              Les mots de passe ne sont pas identiques.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServer03">Email</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-envelope"></i></span>
+              </div>
+              <input type="text" class="form-control" id="validationServer03" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
             </div>
           </div>
           <div class="col-md-6 mb-3">
@@ -89,13 +123,9 @@
             <div class="upload-drop-zone" id="drop-zone">
             Just drag and drop files here
             </div>
-            <div class="js-upload-finished">
-              <h3>Processed files</h3>
-              <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-                <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
-              </div>
-            </div>
+            <i class="fa fa-file" draggable="true"></i>
+            <i class="fa fa-file-video" draggable="true"></i>
+            <i class="fa fa-file-pdf" draggable="true"></i>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" required>
@@ -106,13 +136,28 @@
               You must agree before submitting.
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button id="submit" class="btn btn-primary" type="submit">Valider</button>
       </div>
       </form>
+    </section>
+    <div id="geo">
+      <h1 class="ancre">ANCRE</h1>
+      <h2 class="ancre">ANCRE</h2>
+    </div>
+    <section class="geolocation">
+      <h1 class="col-md-6">Géolocalisation</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

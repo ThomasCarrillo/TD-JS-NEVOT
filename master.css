@@ -51,6 +51,54 @@ header .navbar{
   top: 20%;
   left: 20%;
   font-family: "montserrat";
+  font-size: 20px;
+}
+
+.myBtn {
+     font-family: Poppins;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+}
+
+.accueil button {
+     display: block;
+     padding: 24px 48px;
+     font-family: "montserrat";
+     font-weight: 700;
+     font-size: 12px;
+     letter-spacing: 6px;
+     color: #000;
+     border: 2px solid #000;
+     border-radius: 5px;
+     text-transform: uppercase;
+     outline: none;
+     overflow: hidden;
+     background: none;
+     cursor: crosshair;
+     transition: 0.8s ease-out;
+}
+
+.myBtn:hover {
+     color: #fff;
+     cursor: crosshair;
+}
+
+.myBtn:before {
+     content: "";
+     position: absolute;
+     background: #000;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     top: 100%;
+     z-index: -1;
+     transition: top 0.8s ease-out;
+}
+
+.myBtn:hover:before {
+     top: 0;
 }
 
 .ancre{
@@ -109,4 +157,11 @@ h5{
 
 .btn{
   margin-top: 20px;
+}
+
+.geolocation h1{
+  top: 15%;
+  left: 20%;
+  font-family: "montserrat";
+  font-size: 50px;
 }
