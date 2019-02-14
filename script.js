@@ -16,7 +16,7 @@
         e.preventDefault()
 
         startUpload(uploadFiles)
-    })
+    });
 
     dropZone.ondrop = function(e) {
         e.preventDefault();
@@ -67,9 +67,9 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   var alert = document.getElementById("submit");
-  var target = document.getElementsByClassName("needs-validation")
+  var target = document.getElementsByClassName("needs-validation");
   alert.addEventListener("click", function(){
-    if(target.className === "was-validated"){
+    if(target.className === "needs-validation was-validated"){
       swal("Succès !", "Le formulaire à bien été envoyé !", "success");
     }
     else {
@@ -77,29 +77,3 @@ $(document).ready(function(){
     }
   });
 });
-
-$(document).ready(function(){
-  $("#validationServerUsername").change(function(){
-    if(!$("#validationServerUsername").val().match(/^[a-zA-Z0-9]{6,24}$/)){
-      $("#usernameFeedback").css("display", "block");
-    }
-    else {
-      $("#usernameFeedback").css("display", "none");
-    }
-  });
-});
-
-function showPosition(position) {
-  var latlon = position.coords.latitude + "," + position.coords.longitude;
-
-  var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false&key=YOUR_:KEY";
-
-  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-}
-
-function initMap() {
-  var mapProp= {
-    zoom:5,
-  };
-  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
