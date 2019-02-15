@@ -12,7 +12,8 @@
   <body data-spy="scroll" data-target="#navigation" data-offset="0" onload="dessiner();">
     <header id="accueil">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
-        <a class="navbar-brand scroll" href="#accueil">Quezio</a>
+        <a class="navbar-brand scroll" href="#accueil">
+          <img class="logo" src="Images/logo2.png" alt="logo" title="Quezio">Quezio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,6 +28,9 @@
             <li class="nav-item">
               <a class="nav-link scroll" href="#geo">Géolocalisation</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#contact">Contact</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -34,6 +38,9 @@
     <section class="accueil">
       <h1 class="col-md-6">Quezio</h1>
       <p class="col-sm-6">Le formulaire dont VOUS avez besoin.</p>
+      <div class="side-strip">
+        <span>QUEZIO</span>
+      </div>
       <a class="navlink scroll" href="#form"><button class="myBtn">COMMENCER</button></a>
       <canvas id="canvas" class="canvas" width="200" height="200"></canvas>
     </section>
@@ -105,7 +112,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-phone"></i></span>
               </div>
-              <input type="tel" class="form-control" id="validationServerTel" placeholder="Par exemple: 0612345678" aria-describedby="inputGroupPrepend3" pattern="[0-9] {10}" required>
+              <input type="tel" class="form-control" id="validationServerTel" placeholder="Par exemple: 0612345678" aria-describedby="inputGroupPrepend3" pattern="[0-9] {11}" required>
             </div>
           </div>
           <div class="col-md-6 mb-3">
@@ -169,10 +176,23 @@
       <p class="col-md-6 paraMap"><strong>Voici une carte pour vous situer :</strong></p>
         <div id="map"></div>
     </section>
-    <footer>
-      <div class="footer bg-dark">
-        <p>Quezio</p>
-      </div>
+    <footer id="contact">
+    	<div class="footerRow1 bg-dark">
+
+            <div class="block_coordonnee">
+                <p class="contact"><strong>Contact : </strong></p>
+                <p>Marseille, Bouches du Rhône, France</p>
+                <i class="fa fa-phone"></i><a class="tel" href="tel:+33621527080"><em>06 21 52 70 80</em></a><br>
+                <i class="fa fa-phone"></i><a class="tel" href="tel:+33683175652"><em>06 83 17 56 52</em></a>
+                <p><i class="fa fa-envelope"></i><a href="mailto:blasquezdylan0@gmail.com?subject=feedback" class="mail"><em>blasquezdylan0@gmail.com</em></a><p>
+                <p><i class="fa fa-envelope"></i><a href="mailto:thomas.carrillo84@gmail.com?subject=feedback" class="mail"><em>thomas.carrillo84@gmail.com</em></a><p>
+            </div>
+        </div>
+        <div class="footerRow2 bg-dark">
+            <div class="copyright">
+                <em>Quezio</em> © 2019. Tous droits réservés.
+            </div>
+        </div>
     </footer>
 
 

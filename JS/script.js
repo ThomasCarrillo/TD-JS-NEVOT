@@ -82,11 +82,12 @@ $(document).ready(function(){
   var alert = document.getElementById("submit");
   var target = document.getElementById("formulaire");
   var email = document.getElementById("validationServerEmail");
+  var input = document.getElementsByTagName("input");
   alert.addEventListener("click", function(){
-    if(target.className == "needs-validation" && target.className == "was-validated"){
+    if(input.value != ""){
       swal("Succès !", "Le formulaire à bien été envoyé !", "success");
     }
-    else if(email.validity.typeMismatch || email.value === "") {
+    else if(input.value === "") { //email.validity.typeMismatch
       swal("Erreur !", "Veuillez vérifier les informations rentrées !", "error");
     }
   });

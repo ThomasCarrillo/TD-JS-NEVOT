@@ -16,7 +16,12 @@ html, body{
 header .navbar{
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 99;
+}
+
+.logo{
+  max-width: 80px;
+  padding-right: 10px;
 }
 
 .navbar-brand{
@@ -24,7 +29,7 @@ header .navbar{
 }
 
 .navbar .navbar-brand{
-  font-size: 30px;
+  font-size: 40px;
   font-style: italic;
 }
 
@@ -52,6 +57,17 @@ header .navbar{
   left: 20%;
   font-family: "montserrat";
   font-size: 20px;
+}
+
+.side-strip{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -1em;
+  transform: rotate(90deg);
+  color: #000;
+  letter-spacing: 4px;
+  font-family: "montserrat";
 }
 
 .myBtn {
@@ -190,9 +206,41 @@ h5{
   margin: 5% 0 5% 26%;
 }
 
-.footer{
+.footerRow1{
   width: 100%;
   height: 20em;
   color: #fff;
   font-family: "montserrat";
+  text-align: center;
+}
+
+.footerRow2{
+  width: 100%;
+  color: #fff;
+  font-family: "montserrat";
+  text-align: center;
+}
+
+.contact{
+	font-size: 20px;
+  text-decoration: underline;
+  padding: 30px 0 50px 0;
+}
+
+.fa-phone{
+	margin-right: 1%;
+}
+
+.tel:hover{
+	color: #fff;
+  text-decoration: none;
+}
+
+.mail:hover{
+	color: #fff;
+  text-decoration: none;
+}
+
+.fa-envelope{
+	margin-right: 1%;
 }
