@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Quezio</title>
-    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="CSS/master.css">
+    <link rel="shortcut icon" href="/css/master.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="dropzone-5.5.0/dist/dropzone.css">
   </head>
   <body data-spy="scroll" data-target="#navigation" data-offset="0">
     <header id="accueil">
@@ -17,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link scroll" href="#accueil">Acceuil</a>
+              <a class="nav-link scroll" href="#accueil">Acceuil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link scroll" href="#form">Formulaire</a>
@@ -40,7 +42,7 @@
     </div>
     <section class="formulaire">
       <h1 class="col-md-6">Formulaire</h1>
-      <form class="needs-validation">
+      <form id="formulaire" class="needs-validation" novalidate>
         <div class="form-col">
           <div class="col-md-6 mb-3">
             <label for="validationServer01">Nom</label>
@@ -50,13 +52,14 @@
             <label for="validationServer02">Prénom</label>
             <input type="text" class="form-control" id="validationServer02" placeholder="Prénom" required>
           </div>
-          <div class="col-md-6 mb-3">
+          <div id="civilite" class="col-md-6 mb-3">
             <label for="validationServerUsername">Identifiant</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-user"></i></span>
               </div>
               <input type="text" class="form-control" id="validationServerUsername" placeholder="Identifiant" aria-describedby="inputGroupPrepend3" required>
+              <span id="validUsername"></span>
               <div id="usernameFeedback" class="invalid-feedback">
                 Identifiant non disponible. Veuillez en choisir un autre.
               </div>
@@ -69,9 +72,8 @@
                 <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-lock"></i></span>
               </div>
               <input type="password" class="form-control" id="validationServerPassword" placeholder="Mot de passe" aria-describedby="inputGroupPrepend3" required>
-              <span id="validPassword"></span>
               <div id="passwordFeedback" class="invalid-feedback">
-                Mot de passe invalide.
+                Le mot de passe est invalide.
               </div>
             </div>
           </div>
@@ -82,19 +84,47 @@
                 <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-lock"></i></span>
               </div>
               <input type="password" class="form-control" id="validationServerConfirmPassword" placeholder="Confirmez le mot de passe" aria-describedby="inputGroupPrepend3" required>
-              <span id="validPassword"></span>
-              <div id="verifPasswordFeedback" class="invalid-feedback">
+              <div id="confirmPasswordFeedback" class="invalid-feedback">
                 Les mots de passe ne sont pas identiques.
               </div>
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="validationServer03">Email</label>
+            <label for="validationServerEmail">Email</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-envelope"></i></span>
               </div>
-              <input type="text" class="form-control" id="validationServer03" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+              <input type="email" class="form-control" id="validationServerEmail" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServerTel">Téléphone portable</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-phone"></i></span>
+              </div>
+              <input type="tel" class="form-control" id="validationServerTel" placeholder="Par exemple: 0612345678" aria-describedby="inputGroupPrepend3" pattern="[0-9] {10}" required>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServer04">Pays</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-flag"></i></span>
+              </div>
+              <select class="form-control" required>
+                <option>-- Choisir un pays --</option>
+                <option>Allemagne</option>
+                <option>Belgique</option>
+                <option>Espagne</option>
+                <option>France</option>
+                <option>Italie</option>
+                <option>Luxembourg</option>
+                <option>Portugal</option>
+                <option>Royaumes-Unis</option>
+                <option>Suisse</option>
+              </select>
             </div>
           </div>
           <div class="col-md-6 mb-3">
@@ -107,29 +137,14 @@
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="validationServer04">Pays</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend3"><i class="fa fa-flag"></i></span>
-              </div>
-              <input type="text" class="form-control" id="validationServer04" placeholder="Pays" required>
+            <h5><strong>Essayez de déplacer ces éléments d'une zone à l'autre:</strong></h5>
+            <div class="dropper">
+              <div class="draggable">#1</div>
+              <div class="draggable">#2</div>
+              <div class="draggable">#3</div>
             </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <h5><strong>Sélectionnez les fichiers à partir de votre ordinateur:</strong></h5>
-            <form class="choose-file" action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-              <div class="form-inline">
-                <div class="form-group">
-                  <input type="file" name="files[]" id="js-upload-files" multiple>
-                </div>
-              </div>
-            </form>
-            <div class="upload-drop-zone" id="drop-zone">
-            Just drag and drop files here
+            <div class="dropper">
             </div>
-            <i class="fa fa-file" draggable="true"></i>
-            <i class="fa fa-file-video" draggable="true"></i>
-            <i class="fa fa-file-pdf" draggable="true"></i>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" required>
@@ -150,19 +165,19 @@
     </div>
     <section class="geolocation">
       <h1 class="col-md-6">Géolocalisation</h1>
-      <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="JS/script.js"></script>
+    <script type="text/javascript" src="JS/dropzone.js"></script>
   </body>
 </html>
