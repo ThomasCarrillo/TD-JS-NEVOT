@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="dropzone-5.5.0/dist/dropzone.css">
   </head>
-  <body data-spy="scroll" data-target="#navigation" data-offset="0">
+  <body data-spy="scroll" data-target="#navigation" data-offset="0" onload="dessiner();">
     <header id="accueil">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
         <a class="navbar-brand scroll" href="#accueil">Quezio</a>
@@ -35,6 +35,7 @@
       <h1 class="col-md-6">Quezio</h1>
       <p class="col-sm-6">Le formulaire dont VOUS avez besoin.</p>
       <a class="navlink scroll" href="#form"><button class="myBtn">COMMENCER</button></a>
+      <canvas id="canvas" class="canvas" width="200" height="200"></canvas>
     </section>
     <div id="form">
       <h1 class="ancre">ANCRE</h1>

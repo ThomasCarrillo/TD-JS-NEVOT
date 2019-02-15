@@ -101,6 +101,10 @@ header .navbar{
      top: 0;
 }
 
+.canvas{
+  margin: 25% 30% 0 42.5%;
+}
+
 .ancre{
   visibility: hidden;
 }
