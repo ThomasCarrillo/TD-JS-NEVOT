@@ -143,12 +143,15 @@ function dessiner() {
     rectArrondi(ctx, 135, 53, 49, 33, 10);
     rectArrondi(ctx, 135, 119, 25, 49, 10);
 
+    ctx.fillStyle = "yellow";
     ctx.beginPath();
     ctx.arc(37, 37, 13, Math.PI/7, -Math.PI/7, false);
     ctx.lineTo(31, 37);
     ctx.fill();
+    ctx.stroke();
 
     for(var i = 0; i< 8; i++) {
+      ctx.fillStyle = "black";
       ctx.fillRect(51 + i * 16, 35, 4, 4);
     }
 
@@ -160,6 +163,7 @@ function dessiner() {
       ctx.fillRect(51 + i * 16, 99, 4, 4);
     }
 
+    ctx.fillStyle = "pink";
     ctx.beginPath();
     ctx.moveTo(83, 116);
     ctx.lineTo(83, 102);
